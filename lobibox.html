@@ -1,0 +1,178 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/Lobibox.css"/>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.1/animate.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="js/Lobibox.js"></script>
+    <script type="text/javascript">
+            /*
+            var frases = [
+                {
+                    'inicio': 1,                    // Segundos
+                    'duracao': 12,                  // Segundos
+                    'duracao_progresso': true,      // Exibir a barra de progresso do tempo, opções: true ou false
+                    'duracao_ininterrupta': true,   // Exibir até o fim, sem opção de fechamento, opções: true ou false
+                    'fechar_com_clique': false,     // Se sobrepõe a 'duracao_initerrupta', opções: true ou false
+                    'efeito_entrada': 'shake',      // Lista de Efeitos abaixo
+                    'efeito_saida': 'shake',        // Lista de Efeitos abaixo
+                    'titulo': '',                   // Texto
+                    'mensagem': '',                 // Texto
+                    'estilo': 'error',              // Opções: 'default' (cinza), 'error'(vermelho), 'info'(azul claro), 'warning'(laranja), 'success'(verde)
+                    'arredondado': false,           // Opções: true ou false
+                    'posicao': 'top left',          // Opções: 'top left', 'top right', 'bottom left', 'bottom right', 'center top' e 'center bottom'
+                    'tamanho': 'mini',              // Opções: normal, mini, large
+                    'link_para_pagina': '',         // URL completa com http/https
+                    'icone': 'fa fa-check',         // Ícone do FontAwedome V4.7
+                    'pausar_tempo_com_mouse': true  // Opções: true ou false
+                },
+            ]
+            */
+            /***** #######
+            Lista de Efeitos de Animação:
+
+            bounce	flash	pulse	rubberBand
+            shake	headShake	swing	tada
+            wobble	jello	bounceIn	bounceInDown
+            bounceInLeft	bounceInRight	bounceInUp	bounceOut
+            bounceOutDown	bounceOutLeft	bounceOutRight	bounceOutUp
+            fadeIn	fadeInDown	fadeInDownBig	fadeInLeft
+            fadeInLeftBig	fadeInRight	fadeInRightBig	fadeInUp
+            fadeInUpBig	fadeOut	fadeOutDown	fadeOutDownBig
+            fadeOutLeft	fadeOutLeftBig	fadeOutRight	fadeOutRightBig
+            fadeOutUp	fadeOutUpBig	flipInX	flipInY
+            flipOutX	flipOutY	lightSpeedIn	lightSpeedOut
+            rotateIn	rotateInDownLeft	rotateInDownRight	rotateInUpLeft
+            rotateInUpRight	rotateOut	rotateOutDownLeft	rotateOutDownRight
+            rotateOutUpLeft	rotateOutUpRight	hinge	jackInTheBox
+            rollIn	rollOut	zoomIn	zoomInDown
+            zoomInLeft	zoomInRight	zoomInUp	zoomOut
+            zoomOutDown	zoomOutLeft	zoomOutRight	zoomOutUp
+            slideInDown	slideInLeft	slideInRight	slideInUp
+            slideOutDown	slideOutLeft	slideOutRight	slideOutUp
+            heartBeat          
+            ######## *****/
+        
+
+        var frases = [
+            {
+                'inicio': 1,
+                'duracao': 11,
+                'duracao_progresso': true,
+                'duracao_ininterrupta': false,
+                'fechar_com_clique': true,
+                'efeito_entrada': 'heartBeat',
+                'efeito_saida': 'shake',
+                'titulo': '',
+                'mensagem': '<b>Lorem</b> Ipsum ipsum',
+                'estilo': 'success',
+                'arredondado': false,
+                'posicao': 'top left',
+                'tamanho': 'mini',
+                'link_para_pagina': '',
+                'icone': 'fa fa-check',
+                'pausar_tempo_com_mouse': true
+            },
+
+            {
+                'inicio': 2,
+                'duracao': 6,
+                'duracao_progresso': true,
+                'duracao_ininterrupta': false,
+                'fechar_com_clique': false,
+                'efeito_entrada': 'fadeIn',
+                'efeito_saida': 'fadeOut',
+                'titulo': '',
+                'mensagem': '<b>Lorem</b> Ipsum ipsum',
+                'estilo': 'error',
+                'arredondado': true,
+                'posicao': 'bottom right',
+                'tamanho': 'mini',
+                'link_para_pagina': '',
+                'icone': 'fa fa-flag-checkered',
+                'pausar_tempo_com_mouse': true
+            },
+
+            {
+                'inicio': 12,
+                'duracao': 3,
+                'duracao_progresso': true,
+                'duracao_ininterrupta': false,
+                'fechar_com_clique': false,
+                'efeito_entrada': 'pulse',
+                'efeito_saida': 'pulse',
+                'titulo': 'Titulo',
+                'mensagem': '<b>Clique Rápido</b>',
+                'estilo': 'info',
+                'arredondado': false,
+                'posicao': 'center top',
+                'tamanho': 'normal',
+                'link_para_pagina': 'https://google.com',
+                'icone': '',
+                'pausar_tempo_com_mouse': true
+            },
+
+            {
+                'inicio': 15,
+                'duracao': 15,
+                'duracao_progresso': true,
+                'duracao_ininterrupta': false,
+                'fechar_com_clique': false,
+                'efeito_entrada': 'fadeIn',
+                'efeito_saida': 'fadeOut',
+                'titulo': 'Informação:',
+                'mensagem': '<b>Lorem</b> Ipsum ipsum',
+                'estilo': 'info',
+                'arredondado': false,
+                'posicao': 'bottom right',
+                'tamanho': 'mini',
+                'link_para_pagina': '',
+                'icone': '',
+                'pausar_tempo_com_mouse': true
+            },
+        ];
+
+        /* APLICAÇÃO */
+        let i = 0, j = frases.length;
+        while (i < j) {
+            (function (i) {
+                let f = frases[i];
+                let inicio = f.inicio * 1000;
+                let duracao = f.duracao * 1000;
+                setTimeout(function () {
+                    Lobibox.notify(
+                        f.estilo, {
+                            title: f.titulo,
+                            msg: f.mensagem,
+                            size: f.tamanho,
+                            icon: f.icone,
+                            rounded: f.arredondado,
+                            onClickUrl: f.link_para_pagina,
+                            position: f.posicao,
+                            delay: duracao,
+                            delayIndicator: f.duracao_progresso,
+                            closable: f.duracao_ininterrupta,
+                            closeOnClick: f.fechar_com_clique,
+                            pauseDelayOnHover: f.pausar_tempo_com_mouse,
+                            showClass: f.efeito_entrada,
+                            hideClass: f.efeito_saida,
+                            continueDelayOnInactiveTab: false, // pausa a progressão do tempo caso a pessoa troque de tela, retoma quando retornar
+                        }
+                    );
+
+                }, inicio)
+            })(i++)
+        }
+        /* FIM DA APLICAÇÃO */
+    </script>
+</body>
+
+</html>
